@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Badboy录制 | Soul-king</title><meta name="author" content="Soul King"><meta name="copyright" content="Soul King"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="使用Badboy工具录制Jmeter脚本1.使用Badboy录制JMeter脚本打开Badboy工具开始进行脚本录制。  当我们打开Badboy工具时，默认就进入录制状态。 如下图：   当然我们也可以点击录制按钮，进行状态的切换。  在地址栏中输入被测地址，并访问。 我们以访问京东为例： 在输入栏中输入京东网址，点击后边的小箭头，跳转到被测地址中。   当点击剪头后，记录一步操作(相当于创建了一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Badboy录制">
+<meta property="og:url" content="http://example.com/2023/09/19/Badboy%E5%BD%95%E5%88%B6/index.html">
+<meta property="og:site_name" content="Soul-king">
+<meta property="og:description" content="使用Badboy工具录制Jmeter脚本1.使用Badboy录制JMeter脚本打开Badboy工具开始进行脚本录制。  当我们打开Badboy工具时，默认就进入录制状态。 如下图：   当然我们也可以点击录制按钮，进行状态的切换。  在地址栏中输入被测地址，并访问。 我们以访问京东为例： 在输入栏中输入京东网址，点击后边的小箭头，跳转到被测地址中。   当点击剪头后，记录一步操作(相当于创建了一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/09/19/283fEFLdNsTgIHG.png">
+<meta property="article:published_time" content="2023-09-19T05:55:36.000Z">
+<meta property="article:modified_time" content="2023-09-19T06:13:55.848Z">
+<meta property="article:author" content="Soul King">
+<meta property="article:tag" content="Badboy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/09/19/283fEFLdNsTgIHG.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="http://example.com/2023/09/19/Badboy%E5%BD%95%E5%88%B6/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Badboy录制',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-19 14:13:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/sk.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas  fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas  fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas  fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://s2.loli.net/2023/09/19/283fEFLdNsTgIHG.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Soul-king"><span class="site-name">Soul-king</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas  fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas  fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas  fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Badboy录制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-19T05:55:36.000Z" title="发表于 2023-09-19 13:55:36">2023-09-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-19T06:13:55.848Z" title="更新于 2023-09-19 14:13:55">2023-09-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Badboy%E5%AD%A6%E4%B9%A0/">Badboy学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Badboy录制"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="使用Badboy工具录制Jmeter脚本"><a href="#使用Badboy工具录制Jmeter脚本" class="headerlink" title="使用Badboy工具录制Jmeter脚本"></a><strong>使用Badboy工具录制Jmeter脚本</strong></h2><h2 id="1-使用Badboy录制JMeter脚本"><a href="#1-使用Badboy录制JMeter脚本" class="headerlink" title="1.使用Badboy录制JMeter脚本"></a>1.使用Badboy录制JMeter脚本</h2><p>打开Badboy工具开始进行脚本录制。</p>
+<ol>
+<li><p>当我们打开Badboy工具时，默认就进入录制状态。</p>
+<p>如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/03-19-23-140352.png" class>
+
+<p>当然我们也可以点击录制按钮，进行状态的切换。</p>
+</li>
+<li><p>在地址栏中输入被测地址，并访问。</p>
+<p>我们以访问京东为例：</p>
+<p>在输入栏中输入京东网址，点击后边的小箭头，跳转到被测地址中。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/03-19-23-140359.png" class>
+
+<p>当点击剪头后，记录一步操作(相当于创建了一个取样器)，并在右侧视图中显示被测网址的内容，如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140404.png" class>
+</li>
+<li><p>在视图中可以直接操作显示出来的内容。</p>
+<p>就和我们平时访问网站一样的，例如：我点击”请登陆”，就会跳转到京东的登陆页面了。</p>
+<p>同时脚本目录树中就会继续添加一步操作。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140408.png" class>
+</li>
+<li><p>停止录制脚本。</p>
+<p>如果一个测试流程录制完成之后，我们就可以点击停止录制。</p>
+<p>就是点击工具栏中的小红点，如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140415.png" class>
+</li>
+<li><p>保存录制好的脚本文件。</p>
+<p>点击File-&gt;Export to JMeter…, 把脚本文件保存到你需要的位置，方便进行管理，JMeter文件的默认格式是.jmx格式的文件。</p>
+</li>
+<li><p>在JMeter中打开刚刚保存的脚本文件进行打开，如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140418.png" class>
+
+<p>说明：所有录制的内容都在Step 1中，这个组件叫<strong>录制控制器</strong>。</p>
+</li>
+<li><p>添加监听器</p>
+<p>使用Badboy录制的Jmeter脚本，是不带监听器的。</p>
+<p>这里我们需要手动添加一个监听器，方便查看结果。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140423.png" class>
+</li>
+<li><p>在JMeter中启动脚本</p>
+<p>在工具栏中点击绿色启动剪头来运行该脚本。</p>
+<p>脚本运行完成之后，可以在”察看结果树”中查看该测试计划中所有请求与响应的结果。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140427.png" class></li>
+</ol>
+<h2 id="2-使用Badboy参数化配置"><a href="#2-使用Badboy参数化配置" class="headerlink" title="2.使用Badboy参数化配置"></a>2.<strong>使用Badboy参数化配置</strong></h2><p>Badboy为方便自动化数据灵活性，提供了脚本参数化的功能。</p>
+<p>像上面的例子中是没有输入性操作在里面的，如果我访问的是百度，需要输入一些搜索关键词信息，这个时候就需要参数化配置了。</p>
+<ol>
+<li><p>打开Badboy工具，默认就进入录制状态。</p>
+</li>
+<li><p>在地址栏中输入被测地址，并访问。</p>
+<p>例如：访问京东网站，搜索需要的商品。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140432.png" class>
+</li>
+<li><p>在百度搜索栏中输入搜索关键词”手机”，并点击搜索。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140436.png" class>
+
+<p>点击搜索：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140439.png" class>
+</li>
+<li><p>点击停止录制按钮，并开始修改。</p>
+<p>展开上一步搜索商品增加的脚本目录树：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140445.png" class>
+
+<p>需要修改两处：</p>
+<ol>
+<li><p>如果输入的关键字信息出现乱码的情况。</p>
+<p>Badboy默认使用系统的IE浏览器，出现乱码的话，将ie属性的utf-8改为gbk。例如，京东网站的ie属性为enc属性。</p>
+<p>双击enc属性(在该属性上右键选择Properties选项也可以)，在弹出的窗口中进行修改，</p>
+<p>如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/04-19-23-140455.png" class>
+
+<p>（GBK大小写都可以）</p>
+<p>注意：你电脑默认的浏览器是什么编码，就换成它对应的编码即可，这样就可以不乱码。</p>
+</li>
+<li><p>配置输入的参数信息</p>
+<p>例如：在京东页面中，keyword属性就是关键词信息。</p>
+<p>双击keyword属性（在该属性上右键选择Properties选项也可以），修改Value属性为${自定义的变量名}，点击确定。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/05-19-23-140501.png" class>
+
+<p>然后开始配置变量的参数信息，步骤如下图所示：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/05-19-23-140507.png" class>
+
+<p>此时keyword属性的值，已被参数化。</p>
+</li>
+</ol>
+</li>
+<li><p>双击Step 1，进行修改</p>
+<p>选择For  each value of vari，表示以每个变量定义的值为准（也就是使用参数化）。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/05-19-23-140515.png" class>
+
+<p>此时查看脚本树的变化，如下图：</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/05-19-23-140522.png" class>
+</li>
+<li><p>保存脚本，并用JMeter打开该脚本，运行即可。</p>
+<p>也可以在Badboy中，右键点击Test1 -&gt; Play Whole Test,执行该录制的脚本，查看执行效果。</p>
+</li>
+</ol>
+<h2 id="3-解决”当前页面的脚本发生错误”提示框"><a href="#3-解决”当前页面的脚本发生错误”提示框" class="headerlink" title="3.解决”当前页面的脚本发生错误”提示框"></a>3.解决”当前页面的脚本发生错误”提示框</h2><p>Badboy录制脚本的时候，总是弹出如下弹框”当前页面的脚本发生错误”。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/05-19-23-140532.png" class>
+
+<p>打开Badboy -&gt; preferences -&gt;点击playing -&gt;勾选Javascript Error Dialogs，然后重新Badboy工具即可。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/05-19-23-140545.png" class>
+
+<p>勾选”JavaScript Error Dialogs”,意思是自动处理&#x2F;抑制JavaScript错误对话框。</p>
+<p>提示：如果以后在录制JMeter脚本的时候，出现如上的弹窗，我们直接点击叉子关闭即可。</p>
+<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4.总结"></a>4.总结</h2><p>使用Badboy工具录制的脚本，相对于使用JMeter自身工具录制的脚本，更加精简，更加干净。</p>
+<p>但是Badboy工具录制脚本的时候，经常出现无法录制脚本的提示，是非常不友好的。</p>
+<p>JMeter自身自带的录制工具，兼容性就非常的好，就是录制的取样器非常的多，需要自己优化。</p>
+<p>总结：以上都是Badboy最基础的用法，还有很多的功能以后在工作中慢慢积累。</p>
+<p>本篇文章来源于：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuyuelinfighting/p/14900019.html">博主繁花似锦</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Soul King</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/09/19/Badboy%E5%BD%95%E5%88%B6/">http://example.com/2023/09/19/Badboy%E5%BD%95%E5%88%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Soul-king</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Badboy/">Badboy</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/09/19/283fEFLdNsTgIHG.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/09/19/Badboy%E4%BB%8B%E7%BB%8D/" title="Badboy介绍"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/09/19/283fEFLdNsTgIHG.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Badboy介绍</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/09/19/Badboy%E4%BB%8B%E7%BB%8D/" title="Badboy介绍"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/09/19/283fEFLdNsTgIHG.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-19</div><div class="title">Badboy介绍</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/sk.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Soul King</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Joker2020-cmd/Joker2020-cmd.Github.io"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">努力更新中....</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Badboy%E5%B7%A5%E5%85%B7%E5%BD%95%E5%88%B6Jmeter%E8%84%9A%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">使用Badboy工具录制Jmeter脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8Badboy%E5%BD%95%E5%88%B6JMeter%E8%84%9A%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">1.使用Badboy录制JMeter脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8Badboy%E5%8F%82%E6%95%B0%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">2.使用Badboy参数化配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%A7%A3%E5%86%B3%E2%80%9D%E5%BD%93%E5%89%8D%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%84%9A%E6%9C%AC%E5%8F%91%E7%94%9F%E9%94%99%E8%AF%AF%E2%80%9D%E6%8F%90%E7%A4%BA%E6%A1%86"><span class="toc-number">4.</span> <span class="toc-text">3.解决”当前页面的脚本发生错误”提示框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">4.总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/" title="Badboy录制"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/09/19/283fEFLdNsTgIHG.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Badboy录制"/></a><div class="content"><a class="title" href="/2023/09/19/Badboy%E5%BD%95%E5%88%B6/" title="Badboy录制">Badboy录制</a><time datetime="2023-09-19T05:55:36.000Z" title="发表于 2023-09-19 13:55:36">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/19/Badboy%E4%BB%8B%E7%BB%8D/" title="Badboy介绍"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/09/19/283fEFLdNsTgIHG.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Badboy介绍"/></a><div class="content"><a class="title" href="/2023/09/19/Badboy%E4%BB%8B%E7%BB%8D/" title="Badboy介绍">Badboy介绍</a><time datetime="2023-09-19T05:55:06.000Z" title="发表于 2023-09-19 13:55:06">2023-09-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/13/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E7%B3%BB%E7%BB%9F-nginx/" title="服务器部署系统(nginx)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/09/12/9OemvhVWbf785rQ.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="服务器部署系统(nginx)"/></a><div class="content"><a class="title" href="/2023/09/13/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E7%B3%BB%E7%BB%9F-nginx/" title="服务器部署系统(nginx)">服务器部署系统(nginx)</a><time datetime="2023-09-13T03:47:07.000Z" title="发表于 2023-09-13 11:47:07">2023-09-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/12/Nginx-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="Nginx负载均衡"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/09/12/9OemvhVWbf785rQ.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Nginx负载均衡"/></a><div class="content"><a class="title" href="/2023/09/12/Nginx-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" title="Nginx负载均衡">Nginx负载均衡</a><time datetime="2023-09-12T07:49:58.000Z" title="发表于 2023-09-12 15:49:58">2023-09-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/11/ChatGTP%E6%90%AD%E5%BB%BA/" title="ChatGTP搭建"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/09/11/tr41skmdcCgG5Rh.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ChatGTP搭建"/></a><div class="content"><a class="title" href="/2023/09/11/ChatGTP%E6%90%AD%E5%BB%BA/" title="ChatGTP搭建">ChatGTP搭建</a><time datetime="2023-09-11T05:10:17.000Z" title="发表于 2023-09-11 13:10:17">2023-09-11</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2023/09/19/283fEFLdNsTgIHG.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Soul King</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="2400485596" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrcType="-1"> </div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
