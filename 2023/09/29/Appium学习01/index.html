@@ -1,0 +1,771 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Appium学习01 | Soul-king</title><meta name="author" content="Soul King"><meta name="copyright" content="Soul King"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="移动端自动化测试框架之AppiumAppium元素定位元素定位工具：  Android使用Android—SDK里的Uiautomatorviewer工具。 IOS使用Appium Desktop里的Appium Inspector检测器。  1.	By_id定位（废弃统一用MobileBy类）通过id属性定位元素，IOS应用上的元素没有这个属性，所有仅支持Android。 代码如下： 1234#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Appium学习01">
+<meta property="og:url" content="http://example.com/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/index.html">
+<meta property="og:site_name" content="Soul-king">
+<meta property="og:description" content="移动端自动化测试框架之AppiumAppium元素定位元素定位工具：  Android使用Android—SDK里的Uiautomatorviewer工具。 IOS使用Appium Desktop里的Appium Inspector检测器。  1.	By_id定位（废弃统一用MobileBy类）通过id属性定位元素，IOS应用上的元素没有这个属性，所有仅支持Android。 代码如下： 1234#">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/08/30/52LHYFsPjieb4K8.png">
+<meta property="article:published_time" content="2023-09-29T01:37:08.000Z">
+<meta property="article:modified_time" content="2025-03-30T04:41:16.481Z">
+<meta property="article:author" content="Soul King">
+<meta property="article:tag" content="Appium学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2023/08/30/52LHYFsPjieb4K8.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="http://example.com/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Appium学习01',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-30 12:41:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/sk.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas  fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas  fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas  fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url('https://s2.loli.net/2023/08/30/52LHYFsPjieb4K8.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Soul-king"><span class="site-name">Soul-king</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas  fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas  fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas  fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 摄影</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Appium学习01</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-29T01:37:08.000Z" title="发表于 2023-09-29 09:37:08">2023-09-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-30T04:41:16.481Z" title="更新于 2025-03-30 12:41:16">2025-03-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Appium%E5%AD%A6%E4%B9%A0/">Appium学习</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Appium学习01"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="移动端自动化测试框架之Appium"><a href="#移动端自动化测试框架之Appium" class="headerlink" title="移动端自动化测试框架之Appium"></a><strong>移动端自动化测试框架之Appium</strong></h1><h2 id="Appium元素定位"><a href="#Appium元素定位" class="headerlink" title="Appium元素定位"></a>Appium元素定位</h2><p>元素定位工具：</p>
+<ul>
+<li>Android使用Android—SDK里的Uiautomatorviewer工具。</li>
+<li>IOS使用Appium Desktop里的Appium Inspector检测器。</li>
+</ul>
+<h4 id="1-By-id定位（废弃统一用MobileBy类）"><a href="#1-By-id定位（废弃统一用MobileBy类）" class="headerlink" title="1.	By_id定位（废弃统一用MobileBy类）"></a>1.	<strong>By_id定位（废弃统一用MobileBy类）</strong></h4><p>通过id属性定位元素，IOS应用上的元素没有这个属性，所有仅支持Android。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单数</span></span><br><span class="line">driver.find_element_by_id(<span class="string">&quot;id属性值&quot;</span>)</span><br><span class="line"><span class="comment">#复数</span></span><br><span class="line">driver.find_elements_by_id(<span class="string">&quot;id属性值&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如下图所示：利用Uiautomatorviewer工具查看元素信息，resource-id属性就是元素的id属性。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822155516893.png" alt="image-20230822155516893"></p>
+<p>练习：</p>
+<p>开启Appium服务，执行如下代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">1.学习目标</span></span><br><span class="line"><span class="string">	必须掌握appium中元素定位基本方法(这些方法我们在Selenium中学习过)</span></span><br><span class="line"><span class="string">	练习目标：掌握元素定位方式id定位</span></span><br><span class="line"><span class="string">2.操作步骤</span></span><br><span class="line"><span class="string">	id定位</span></span><br><span class="line"><span class="string">		只适用于Android，IOS不支持，id并不是唯一属性标识</span></span><br><span class="line"><span class="string">		driver.find_element_by_id(&quot;id属性值&quot;)#单数</span></span><br><span class="line"><span class="string">		driver.find_elements_by_id(&quot;id属性值&quot;)#复数</span></span><br><span class="line"><span class="string">3.需求</span></span><br><span class="line"><span class="string">	在设置App中使用id属性定位”显示“</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导入appium</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> appium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.创建Desired capabilities对象，添加启动参数</span></span><br><span class="line">desired_caps = &#123;</span><br><span class="line">    <span class="string">&quot;platformName&quot;</span>:<span class="string">&quot;Android&quot;</span>,<span class="comment">#系统名称</span></span><br><span class="line">    <span class="string">&quot;platformVersion&quot;</span>:<span class="string">&quot;7.1.2&quot;</span>,<span class="comment">#系统版本</span></span><br><span class="line">    <span class="string">&quot;deviceName&quot;</span>:<span class="string">&quot;127.0.0.1:62001&quot;</span>,<span class="comment">#设备名称</span></span><br><span class="line">    <span class="string">&quot;appPackage&quot;</span>:<span class="string">&quot;com.android.settings&quot;</span>,<span class="comment">#App包名</span></span><br><span class="line">    <span class="string">&quot;appActivity&quot;</span>:<span class="string">&quot;.Settings&quot;</span><span class="comment">#App启动名</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#3.启动App</span></span><br><span class="line">driver = webdriver.Remote(<span class="string">&quot;http://127.0.0.1:4723/wd/hub&quot;</span>,desired_caps)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.定位元素</span></span><br><span class="line"><span class="comment">#在移动端，元素的id不再是唯一的，</span></span><br><span class="line"><span class="comment">#我们可以在Uiautomatorviewer工具查看到，一个页面中类似元素的id都是相同的。</span></span><br><span class="line"><span class="comment">#这个时候我们就要用driver.find_element_by_id来定位元素</span></span><br><span class="line"><span class="comment">#对应的字段resource-id属性值。</span></span><br><span class="line"><span class="comment">#4.1 定位设置ap界面中的所有标题</span></span><br><span class="line">id_elements= driver.find_elements_by_id(<span class="string">&quot;android:id/title&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.2 查看一共获取了多少标题title</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;元素数量：&quot;</span>+<span class="built_in">str</span>(<span class="built_in">len</span>(id_elements)))</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.3 遍历获取标题对应的文本</span></span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> id_elements:</span><br><span class="line">    <span class="built_in">print</span>(element.text)<span class="comment">#遍历打印所有元素的text值</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#5.关闭App</span></span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822161734990.png" alt="image-20230822161734990"></p>
+<h4 id="2-by-name定位"><a href="#2-by-name定位" class="headerlink" title="2.	by_name定位"></a>2.	by_name定位</h4><p>Appium版本在1.5之后，Android就不再支持name的元素定位方法。</p>
+<p>Android如果使用name方法，则报如下错误：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822162016028.png" alt="image-20230822162016028"></p>
+<p>IOS可以正常使用name元素定位。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单数</span></span><br><span class="line">driver.find_element_by_name(<span class="string">&quot;name&quot;</span>)</span><br><span class="line"><span class="comment">#复数</span></span><br><span class="line">driver.find_element_by_name(<span class="string">&quot;name&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如图所示：利用Appium Inspector检查器，name属性指的是name属性。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822162337100.png" alt="image-20230822162337100"></p>
+<p>使用命令：driver.find_element_by_name(“3个月”)</p>
+<p>这里我们就不做演示了。</p>
+<h4 id="3-by-class-name定位"><a href="#3-by-class-name定位" class="headerlink" title="3.	by_class_name定位"></a>3.	<strong>by_class_name定位</strong></h4><p>通过class_name属性定位元素。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单数</span></span><br><span class="line">driver.find_element_by_class_name(<span class="string">&quot;class值&quot;</span>)</span><br><span class="line"><span class="comment">#复数</span></span><br><span class="line">driver.find_element_by_class_name(<span class="string">&quot;class值&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p><strong>Android</strong>:</p>
+<p>如图所示：利用Uiautomatorviewer工具查看，class_name属性指的是class属性。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822162910046.png" alt="image-20230822162910046"></p>
+</li>
+<li><p><strong>IOS:</strong></p>
+<p>如图所示：利用Appium Inspector检查器，class_name属性指的是type属性。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822163042684.png" alt="image-20230822163042684"></p>
+<p>使用命令：driver.find_element_by_class_name(“XCUIElementTypeStaticText”)</p>
+<p>练习：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">1.学习目标</span></span><br><span class="line"><span class="string">	必须掌握appium中元素定位基本方法(这些方法我们在Selenium中学习过)</span></span><br><span class="line"><span class="string">	练习目标：掌握元素定位方式id定位</span></span><br><span class="line"><span class="string">2.操作步骤</span></span><br><span class="line"><span class="string">	id定位</span></span><br><span class="line"><span class="string">		只适用于Android，IOS不支持，id并不是唯一属性标识</span></span><br><span class="line"><span class="string">		driver.find_element_by_class_name(&quot;id属性值&quot;)#单数</span></span><br><span class="line"><span class="string">		driver.find_elements_by_class_naem(&quot;id属性值&quot;)#复数</span></span><br><span class="line"><span class="string">3.需求</span></span><br><span class="line"><span class="string">	在设置App中使用id属性定位”显示“</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导入appium</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> appium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.创建Desired capabilities对象，添加启动参数</span></span><br><span class="line">desired_caps = &#123;</span><br><span class="line">    <span class="string">&quot;platformName&quot;</span>:<span class="string">&quot;Android&quot;</span>,<span class="comment">#系统名称</span></span><br><span class="line">    <span class="string">&quot;platformVersion&quot;</span>:<span class="string">&quot;7.1.2&quot;</span>,<span class="comment">#系统版本</span></span><br><span class="line">    <span class="string">&quot;deviceName&quot;</span>:<span class="string">&quot;127.0.0.1:62001&quot;</span>,<span class="comment">#设备名称</span></span><br><span class="line">    <span class="string">&quot;appPackage&quot;</span>:<span class="string">&quot;com.android.settings&quot;</span>,<span class="comment">#App包名</span></span><br><span class="line">    <span class="string">&quot;appActivity&quot;</span>:<span class="string">&quot;.Settings&quot;</span><span class="comment">#App启动名</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#3.启动App</span></span><br><span class="line">driver = webdriver.Remote(<span class="string">&quot;http://127.0.0.1:4723/wd/hub&quot;</span>,desired_caps)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.定位元素</span></span><br><span class="line"><span class="comment">#在移动端，元素的id不再是唯一的，</span></span><br><span class="line"><span class="comment">#我们可以在Uiautomatorviewer工具查看到，一个页面中类似元素的id都是相同的。</span></span><br><span class="line"><span class="comment">#这个时候我们就要用driver.find_element_by_id来定位元素</span></span><br><span class="line"><span class="comment">#对应的字段resource-id属性值。</span></span><br><span class="line"><span class="comment">#4.1 定位设置ap界面中的所有标题</span></span><br><span class="line">class_elements= driver.find_elements_by_class_name(<span class="string">&quot;android.widget.TextView&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.2 查看一共获取了多少标题title</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;元素数量：&quot;</span>+<span class="built_in">str</span>(<span class="built_in">len</span>(class_elements)))</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.3 遍历获取标题对应的文本</span></span><br><span class="line"><span class="keyword">for</span> element <span class="keyword">in</span> class_elements:</span><br><span class="line">    <span class="built_in">print</span>(element.text)<span class="comment">#遍历打印所有元素的text值</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#5.关闭App</span></span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822163521210.png" alt="image-20230822163521210"></p>
+</li>
+</ol>
+<h4 id="4-by-xpath定位"><a href="#4-by-xpath定位" class="headerlink" title="4.	by_xpath定位"></a>4.	<strong>by_xpath定位</strong></h4><p>通过xpath定位元素，这样就可以在页面中定位一个单个的元素了。</p>
+<p>（如果一个元素的id属性或者class_name属性也是唯一的，我们也可以通过id属性或者class_name属性进行定位。）</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单数</span></span><br><span class="line">deriver.find_element_by_xpath(<span class="string">&quot;xpath&quot;</span>)</span><br><span class="line"><span class="comment">#复数</span></span><br><span class="line">deriver.find_elements_by_xpath(<span class="string">&quot;xpath&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在移动端xpath用法与Web Selenium中的用法一致，在移动端自动化测试中使用xpath定位元素是比较多的。</p>
+<p>练习：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">1.学习目标</span></span><br><span class="line"><span class="string">	必须掌握appium中元素定位基本方法(这些方法我们在Selenium中学习过)</span></span><br><span class="line"><span class="string">	练习目标：掌握元素定位方式id定位</span></span><br><span class="line"><span class="string">2.操作步骤</span></span><br><span class="line"><span class="string">	id定位</span></span><br><span class="line"><span class="string">		只适用于Android，IOS不支持，id并不是唯一属性标识</span></span><br><span class="line"><span class="string">		driver.find_element_by_xpath(&quot;xpath表达式&quot;)#单数</span></span><br><span class="line"><span class="string">		driver.find_elements_by_xpath(&quot;xpath表达式&quot;)#复数</span></span><br><span class="line"><span class="string">3.需求</span></span><br><span class="line"><span class="string">	在设置App中使用xpath定位”显示“标题</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="comment">#1.导入appium</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> appium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.创建Desired capabilities对象，添加启动参数</span></span><br><span class="line">desired_caps = &#123;</span><br><span class="line">    <span class="string">&quot;platformName&quot;</span>:<span class="string">&quot;Android&quot;</span>,<span class="comment">#系统名称</span></span><br><span class="line">    <span class="string">&quot;platformVersion&quot;</span>:<span class="string">&quot;7.1.2&quot;</span>,<span class="comment">#系统版本</span></span><br><span class="line">    <span class="string">&quot;deviceName&quot;</span>:<span class="string">&quot;127.0.0.1:62001&quot;</span>,<span class="comment">#设备名称</span></span><br><span class="line">    <span class="string">&quot;appPackage&quot;</span>:<span class="string">&quot;com.android.settings&quot;</span>,<span class="comment">#App包名</span></span><br><span class="line">    <span class="string">&quot;appActivity&quot;</span>:<span class="string">&quot;.Settings&quot;</span><span class="comment">#App启动名</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#3.启动App</span></span><br><span class="line">driver = webdriver.Remote(<span class="string">&quot;http://127.0.0.1:4723/wd/hub&quot;</span>,desired_caps)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.定位元素</span></span><br><span class="line"><span class="comment">#4.1 xpath定位“显示”按钮</span></span><br><span class="line">more = driver.find_elements_by_xpath(<span class="string">&quot;//*[@text=&#x27;显示&#x27;]&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.2 点击“显示”元素，进入显示页面</span></span><br><span class="line">more.click()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="comment">#5.关闭App</span></span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-by-accessibility-id定位"><a href="#5-by-accessibility-id定位" class="headerlink" title="5.	by_accessibility_id定位"></a>5.	<strong>by_accessibility_id定位</strong></h4><p>通过accessibility_id属性查找元素。（移动端特有）</p>
+<p>标识附加到给定元素的辅助功能或标签的字符串。</p>
+<p>针对ios的辅助功能标识符和针对Android的内容描述。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单数</span></span><br><span class="line">driver.find_element_by_accessibity_id(<span class="string">&quot;accessibity_id&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#复数</span></span><br><span class="line">driver.find_element_by_accessibity_id(<span class="string">&quot;accessibity_id&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>Android：</p>
+<p>如图所示：利用Uiautomatorviewer工具查看，accessility_id属性指的是content-desc属性。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230825111551346.png" alt="image-20230825111551346"></p>
+<p>练习：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">1.学习目标</span></span><br><span class="line"><span class="string"> 	掌握appium中accessibility_id元素定位方法</span></span><br><span class="line"><span class="string"> 2.操作步骤</span></span><br><span class="line"><span class="string"> 	使用方法：</span></span><br><span class="line"><span class="string"> 	driver.find_element_by_accessibility_id(&quot;content-desc属性&quot;)</span></span><br><span class="line"><span class="string"> 3.需求</span></span><br><span class="line"><span class="string"> 	在设置App中使用accessibility_id方法定位搜索按钮</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#1.导入appium</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> appium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.创建Desired capabilities对象， 添加启动参数</span></span><br><span class="line">desired_caps = &#123;</span><br><span class="line">    <span class="string">&quot;deviceName&quot;</span>: <span class="string">&quot;真机序列号或模拟器本机地址127.0.0.1 ：+模拟器端口&quot;</span>,<span class="comment">#设备名称</span></span><br><span class="line">    <span class="string">&quot;platformName&quot;</span>： <span class="string">&quot;Android&quot;</span>,<span class="comment">#系统名称</span></span><br><span class="line">    <span class="string">&quot;platformVersion&quot;</span>: <span class="string">&quot;12&quot;</span>,<span class="comment">#系统版本</span></span><br><span class="line">    <span class="string">&quot;appPackage&quot;</span>: <span class="string">&quot;com.android.setting&quot;</span>,<span class="comment">#包名</span></span><br><span class="line">    <span class="string">&quot;appActivity&quot;</span>: <span class="string">&quot;.Settings&quot;</span><span class="comment">#app启动名</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#3.启动App</span></span><br><span class="line">driver = webdriver.Remote(<span class="string">&quot;http://127.0.0.1:4723/wd/hub&quot;</span>,desired_caps)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.定位元素</span></span><br><span class="line"><span class="comment">#4.1 定位搜索按钮，通过accessibility_id方法</span></span><br><span class="line">search = driver.find_element_by_accessibility_id(<span class="string">&quot;搜索&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.2点击搜索按钮</span></span><br><span class="line">serch.click()</span><br><span class="line"></span><br><span class="line"><span class="comment">#5.关闭app</span></span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>IOS</p>
+<p>如图所示：利用Appium Inspector检查器，accessibility_id指的是accessibility id属性或者name属性或label属性。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230825113322301.png" alt="image-20230825113322301"></p>
+<p>使用方法：driver.find_element_by_accessibility_id(“More Info”)</p>
+</li>
+</ol>
+<h4 id="6-By-android-uiautomator定位"><a href="#6-By-android-uiautomator定位" class="headerlink" title="6.	By_android_uiautomator定位"></a>6.	<strong>By_android_uiautomator定位</strong></h4><p>通过Android Uiautomator搜索查找元素。（Android系统特有）</p>
+<p>这允许使用Uiautomator库，使用递归元素搜索来找到Android应用程序中的元素。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单数</span></span><br><span class="line">driver.find_element_by_android_uiautomator(<span class="string">&quot;android_uiautomator&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#复数</span></span><br><span class="line">driver.find_element_by_android_uiautomator</span><br></pre></td></tr></table></figure>
+
+<p>可以利用uiautomatorviewer工具查看元素属性信息。</p>
+<p>uiselector工具类介绍：</p>
+<ol>
+<li><p>text属性的方法（text指的是text属性）</p>
+<p>（text指的是text属性）</p>
+<ul>
+<li><p>完全匹配。</p>
+<p> driver.find_element_by_android_uiautomator(‘new UiSelector(),text(“AndroidUI”)’)</p>
+</li>
+<li><p>包含匹配（模拟定位）。</p>
+<p> driver.find_element_by_android_uiautomator(‘new UiSelector().textContains(“Android”)’)</p>
+</li>
+<li><p>以什么内容开始匹配。</p>
+<p> driver.find_element_by_android_uiautomator(‘new UiSelector().textStartWith(“AndroidUI”)’)</p>
+</li>
+<li><p>正则匹配查找。</p>
+<p> driver.find_element_by_android_uiautomator(‘new UiSelector().textMatches(“^Android.*”)’)</p>
+</li>
+</ul>
+</li>
+<li><p>className属性的方法</p>
+<p>（className指的是class属性）</p>
+<ul>
+<li><p>完全匹配</p>
+<p> driver.find_element_by_uiautomator(‘new UiSelector().className(“android.widget.TextView”).text(“AndroidUI”)’)</p>
+</li>
+<li><p>正则匹配查找</p>
+<p> driver.find_element_by_android_uiautomator(‘new UiSelector().classNameMatches(“.*TextViews”).text(AndroidUI)’)</p>
+</li>
+</ul>
+</li>
+<li><p>xpath方法定位</p>
+<p>driver.find_element_by_android_uiautomator(‘new UiSelector().className(“android,widget.TextView”).childSelector(new UiSelector().text(“AndroidUI”)’)</p>
+</li>
+<li><p>resourceId属性的方法</p>
+<p>（resourceId指的是resource-id属性）</p>
+<ul>
+<li>driver.find_element_by_android_uiautomator(‘new UiSelector().resourceId(“com.android.calculator2:id&#x2F;op_add”)’)</li>
+<li>driver.find_element_by_android_uiautomator(‘new UiSelector().resourceIdMatches(“.*id&#x2F;op_adds”)’)</li>
+</ul>
+</li>
+<li><p>description属性的方法</p>
+<p>（description指的是content-desc属性）</p>
+<ul>
+<li>driver.find_element_by_android_uiautomator(‘new UiSelector().description(“加”)’)</li>
+<li>driver.find_element_by_android_uiautomator(‘new UiSelector().descriptionStartsWith(“加”)’)</li>
+<li>driver.find_element_by_android_uiautomator(‘new UiSelector().descriptionMatches(“^加.*”)’)</li>
+</ul>
+<p>UiSelector类中还支持其他一些方法，比如根据控件属性是否可聚焦可长按等来缩小要定位的控件的范围，具体使用方法不一一列举了。</p>
+<p>练习：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">1.学习目标</span></span><br><span class="line"><span class="string">	了解appium中元素定位Android专用方法 Android_UIautomator</span></span><br><span class="line"><span class="string">2.操作步骤</span></span><br><span class="line"><span class="string">	使用方法：</span></span><br><span class="line"><span class="string">	driver.find_element_by_android_uiautomator(&quot;java代码&quot;)</span></span><br><span class="line"><span class="string">	java代码中使用UiSelector类来处理元素的定位</span></span><br><span class="line"><span class="string">		new UiSelector().text(&quot;本文内容&quot;)</span></span><br><span class="line"><span class="string">3.需求</span></span><br><span class="line"><span class="string">	在设置App中使用Android专用的定位方法</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#1.导入appium</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> appium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="comment">#2.创建Desired capabilities对象，添加启动参数</span></span><br><span class="line">desired_caps = &#123;</span><br><span class="line">    <span class="string">&quot;deviceName&quot;</span>: <span class="string">&quot;127.0.0.1:62001&quot;</span>,<span class="comment">#设备名称</span></span><br><span class="line">    <span class="string">&quot;platformName&quot;</span>: <span class="string">&quot;Android&quot;</span>,<span class="comment">#系统名称</span></span><br><span class="line">    <span class="string">&quot;platformVersion&quot;</span>: <span class="string">&quot;12&quot;</span>,<span class="comment">#系统版本</span></span><br><span class="line">    <span class="string">&quot;appPackage&quot;</span>: <span class="string">&quot;com.android.settings&quot;</span>,<span class="comment">#App包名</span></span><br><span class="line">    <span class="string">&quot;appActivity&quot;</span>: <span class="string">&quot;.Settings&quot;</span><span class="comment">#app启动名</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#3.启动App</span></span><br><span class="line">driver = webdriver.Remote(<span class="string">&quot;http://127.0.0.1/wd/hub&quot;</span>,desired_caps)</span><br><span class="line"></span><br><span class="line"><span class="comment">#4.定位元素</span></span><br><span class="line"><span class="comment">#4.1定位蓝牙，通过Android_Uiautomator方法</span></span><br><span class="line"><span class="comment">#单引号里面是java代码，使用UiSelector这个类来定位元素。</span></span><br><span class="line">blue_tooth = driver.find_element_by_android_uiautomator(<span class="string">&quot;new UiSelector().text(&quot;</span>蓝牙<span class="string">&quot;)&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#注意：</span></span><br><span class="line"><span class="comment">#上面new UiSelector().text(&quot;蓝牙&quot;)中，一定是外单引号，里边双引号</span></span><br><span class="line"><span class="comment">#因为这是一段java代码，而text()方法中要传入一个string类型的参数</span></span><br><span class="line"><span class="comment">#java中String类型的参数是加双引号的，所以必须是外单内双</span></span><br><span class="line"><span class="comment">#否则会报错。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#4.2点击搜索按钮</span></span><br><span class="line">blue_tooth.click()</span><br><span class="line"></span><br><span class="line"><span class="comment">#5.关闭App</span></span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="Web页面自动化测试，元素定位是页面自动化测试的第一步。"><a href="#Web页面自动化测试，元素定位是页面自动化测试的第一步。" class="headerlink" title="Web页面自动化测试，元素定位是页面自动化测试的第一步。"></a>Web页面自动化测试，元素定位是页面自动化测试的第一步。</h2><h2 id="App自动化测试的第一步，也是元素的定位。"><a href="#App自动化测试的第一步，也是元素的定位。" class="headerlink" title="App自动化测试的第一步，也是元素的定位。"></a>App自动化测试的第一步，也是元素的定位。</h2><h2 id="App中的元素定位工具大致有三种："><a href="#App中的元素定位工具大致有三种：" class="headerlink" title="App中的元素定位工具大致有三种："></a>App中的元素定位工具大致有三种：</h2><ol>
+<li><h2 id="Uiautomatorviewer工具"><a href="#Uiautomatorviewer工具" class="headerlink" title="Uiautomatorviewer	工具"></a>Uiautomatorviewer	工具</h2></li>
+<li><h2 id="Appium-Inspector工具"><a href="#Appium-Inspector工具" class="headerlink" title="Appium 	Inspector	工具"></a>Appium 	Inspector	工具</h2></li>
+<li><h2 id="ChromeInspect工具"><a href="#ChromeInspect工具" class="headerlink" title="Chrome	Inspect	工具"></a>Chrome	Inspect	工具</h2></li>
+</ol>
+<h2 id="Uiautomatorviewer"><a href="#Uiautomatorviewer" class="headerlink" title="Uiautomatorviewer"></a><strong>Uiautomatorviewer</strong></h2><h3 id="1-Uiautomatorviewer介绍"><a href="#1-Uiautomatorviewer介绍" class="headerlink" title="1.	Uiautomatorviewer介绍"></a>1.	Uiautomatorviewer介绍</h3><p>在开始编写代码之前，需要获取待测应用的UI元素，可以通过Uiautomatorviewer工具来获取应用的界面截图并分析。</p>
+<p>Uiautomatorviewer工具获取当前UI界面的快照，提供一个可视化的界面，来查看UI布局结构，并且可以查看各个控件的相关属性。利用这些信息来选择特定的UI组件并创建App中的自动化UI测试代码。</p>
+<p>总结：</p>
+<ul>
+<li>Uiautomatorviewer工具是专门用来定位Android系统App中原生页面中的元素。</li>
+<li>Uiautomatorviewer是AndroidSDK里的一个工具，这个工具在AndroidSDK目录下的tools文件夹下。（IOS系统在tools\bin的子目录下）</li>
+<li>Uiautomatorviewer使用简单，速度也相对比较快。</li>
+</ul>
+<h3 id="2-Uiautomatorviewer工具打开方式"><a href="#2-Uiautomatorviewer工具打开方式" class="headerlink" title="2.	Uiautomatorviewer工具打开方式"></a>2.	Uiautomatorviewer工具打开方式</h3><p>在下载的Android—SDK中找到tools里的Uiautomatorviewer.bat文件双击打开工具</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822093033212.png" alt="image-20230822093033212"></p>
+<p>先会出现一个黑窗口，然后就会出现一个Uiautomatorviewer工具的界面</p>
+<p>​     <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822093619228.png" alt="image-20230822093619228">        </p>
+<h3 id="3-Uiautomatorviewer布局界面介绍"><a href="#3-Uiautomatorviewer布局界面介绍" class="headerlink" title="3.	Uiautomatorviewer布局界面介绍"></a>3.	Uiautomatorviewer布局界面介绍</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822093814089.png" alt="image-20230822093814089"></p>
+<p>整个界面分四个区域:</p>
+<ol>
+<li><p><strong>工作栏区</strong></p>
+<p>在工作栏中共有4个按钮从左至右分别用于：</p>
+<ul>
+<li>打开已保存的界面快照和布局</li>
+<li>抓取当前手机屏幕截图（Device Screenshoot Uiautomator dupm）</li>
+<li>带有压缩层次结构的设备屏幕截图（Device Screenshoot with Compressed Hierarchy (Uiautomator dump -compressed)）第二按钮于第三按钮把全部布局呈现出来，而第三按钮只呈现有用的控件布局。比如存在一个Frame，但只有装饰功能，那么点击第三按钮时，可能不被呈现。</li>
+<li>保存当前屏幕界面的快照和布局</li>
+</ul>
+</li>
+</ol>
+<p>​			2.<strong>屏幕截图区</strong></p>
+<p>​				显示当前屏幕显示的布局图片</p>
+<p>​			3.<strong>布局区</strong></p>
+<p>​				已Xml树的形式，显示控件布局</p>
+<p>​			4.<strong>控件属性区</strong></p>
+<p>​				当点击某一控件时，将显示该控件属性信息。</p>
+<h3 id="4-Uiautomatorviewer工具的使用"><a href="#4-Uiautomatorviewer工具的使用" class="headerlink" title="4.Uiautomatorviewer工具的使用"></a>4.Uiautomatorviewer工具的使用</h3><ol>
+<li>​	<strong>Uiautomatorviewer工具使用的前提</strong><ul>
+<li>打开Uiautomatorviewer工具</li>
+<li>所测试设备是开机状态（手机或者模拟器）				</li>
+<li>确保电脑与设备是链接状态，也就是cmd进入命令行终端，输入 adb connect 127.0.0.1:62001链接夜神模拟器，输入 adb devices 能够获取设备名称</li>
+</ul>
+</li>
+</ol>
+<p>如果电脑没有与设备不是链接的状态，点击Uiautomatorviewer工具栏中的第二个按钮，来抓取手机界面是抓不到的。</p>
+<p>如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822095942818.png" alt="image-20230822095942818"></p>
+<ol start="2">
+<li>​	<strong>抓取当前手机的屏幕界面</strong></li>
+</ol>
+<p>​					就是点击Uiautomatorviewer工具栏中的第二个按钮进行抓取:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822100211467.png" alt="image-20230822100211467"></p>
+<p>说明:点击完成后，设备上的界面就会被同步到这个工具的左侧，点击左侧需要查看的控件，在这个工具的右侧就可以看到这个控件对应的详细信息。</p>
+<p>提示:</p>
+<p>当Uiautomatorviewer能够不抓取手机屏幕时，可以先关闭和重启adb服务</p>
+<p>执行命令如下：</p>
+<ul>
+<li>adb	kill-server</li>
+<li>adb    start-server</li>
+</ul>
+<p>​		3.<strong>定位其它页面里的元素</strong></p>
+<p>​			如果需要继续定位其他页面里的元素，先在设备中操作到定位元素的页面后，再次点击工具左上角的排子按钮，就可以抓取最新的页面元素信息。</p>
+<p>例如：</p>
+<p>定位完设置App中界面的元素，我又想定位淘宝首页的页面元素。</p>
+<p>首先在手机中打开淘宝App，进入到淘宝App的首页。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822101225757.png" alt="image-20230822101225757"></p>
+<p>然后点击Uiautomatorviewer工具栏中的第二个按钮，来抓取新的界面</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822101402155.png" alt="image-20230822101402155"></p>
+<p>​					4.<strong>保存</strong></p>
+<p>​						点击保存按钮，可保存抓取的屏幕截屏和一个uix文件（XML格式的的页面布局，就相当于页面源码）。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822101641447.png" alt="image-20230822101641447"></p>
+<p>我们可以看到文件夹中会有上面说过的两个文件。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822101739507.png" alt="image-20230822101739507"></p>
+<p>我们也可以对保存的文件进行重命名，方便我们以后的使用和管理。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822101848241.png" alt="image-20230822101848241"></p>
+<p>​				5.打开已保存的界面快照和布局</p>
+<p>​				点击打开文件，可以将之前保存好的页面屏幕截图和.uix文件导入进来。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822102038461.png" alt="image-20230822102038461"></p>
+<p>点击ok之后，就选显示以前保存过的界面信息了。</p>
+<p>如下图所示:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822102209820.png" alt="image-20230822102209820"></p>
+<p>导入后即可进行元素定位操作。</p>
+<h2 id="Appium-Inspector"><a href="#Appium-Inspector" class="headerlink" title="Appium Inspector"></a>Appium Inspector</h2><h3 id="1-Appium-Inspector"><a href="#1-Appium-Inspector" class="headerlink" title="1.	Appium Inspector"></a>1.	<strong>Appium Inspector</strong></h3><p>Appium Server有两种启动方式</p>
+<ul>
+<li>一种Appium Desktop有图形界面的启动方式，称之为桌面版；</li>
+<li>另一种版本是通过npm安装，使用命令行参数启动的Appium Server；</li>
+</ul>
+<p>而Appium Inspector工具就在Appium Desktop中，Appium Inspector是Appium Desktop附带的一个元素定位检查器，用来调试定位应用程序很方便。</p>
+<p>Appium Inspector工具同时支持Android系统和IOS系统中原生界面的元素定位。</p>
+<h3 id="2-Appium-Inspector打开方式"><a href="#2-Appium-Inspector打开方式" class="headerlink" title="2.   Appium Inspector打开方式"></a>2.   <strong>Appium Inspector打开方式</strong></h3><p>Appium  Desktop安装完成之后，双击打开。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822103602071.png" alt="image-20230822103602071"></p>
+<p>说明：界面有3个Tab选项</p>
+<ul>
+<li>Simple：默认配置，监听本机4723端口；</li>
+<li>Advanced：高级设置，可以自定义Appium Server端的配置，配置好后可以保存到Presets；</li>
+<li>Presets：修改Advanced高级设置中的配置项。</li>
+</ul>
+<p>一般我们测试直接使用Simple即可，点击Start Server按钮，启动Appium Server，并开启监听本机4723端口。开启服务后，界面跳转到服务端控制台，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822104412007.png" alt="image-20230822104412007"></p>
+<p>提示：</p>
+<p>控制台显示运行的脚本中的日志信息，右上角有3个按钮，分别是：</p>
+<ul>
+<li>第一个按钮Start  Inspector Session，开启Appium Inspector定位工具；注意：inspector会新开一个Session；</li>
+<li>第二个按钮Get Raws Logs ，下载当前控制台中的log信息；</li>
+<li>第三按钮Stop Server，关闭当前的Appium Server。</li>
+</ul>
+<p>有两种方式可以启动Appium Inspector工具，</p>
+<ul>
+<li>方式一：点击右上角三个按钮中的第一个（一个放大镜样子的按钮），打开Appium Inspector工具。</li>
+<li>方式二：点击左上角File–&gt;New Session Window…..Ctrl+N可以打开Appium Inspector工具</li>
+</ul>
+<p>如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822105454030.png" alt="image-20230822105454030"></p>
+<p>Appium  Inspector工具开启后的界面如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822105546386.png" alt="image-20230822105546386"></p>
+<h3 id="3-Appium-Inspector布局介绍"><a href="#3-Appium-Inspector布局介绍" class="headerlink" title="3.Appium Inspector布局介绍"></a>3.Appium Inspector布局介绍</h3><p>Appium Inspector布局如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822105722220.png" alt="image-20230822105722220"></p>
+<p>上图说明：</p>
+<ol>
+<li>布局1是Appium Inspector服务的设置。Automatic  Server：自动服务器  Custom  Server:定制服务器 Select  Cloud  Providers:选择云提供商我们一般使用Automatic Server即可：will use currently-running Appium Desktop server http：&#x2F;&#x2F;localhost：4723将使用当前运行的Appium桌面服务器http：&#x2F;&#x2F;localhost：4723</li>
+<li>布局2是高级设置。可以设置Allow Unauthorized Certificates：允许未经授权的证书。Use Proxy：使用代理服务器。初学一般我们不进行高级设置。</li>
+<li>布局3是Desired Capabilities参数设置。Desired  Capabilities：编写Desired  Capabilities参数。Saved Capability Sets：已保存的Desired Capabilities，可以进行查看和修改。Attach to Session….:附加到会话…（用到的时候再说）</li>
+</ol>
+<h3 id="4-Appium-Inspector工具的配置"><a href="#4-Appium-Inspector工具的配置" class="headerlink" title="4.Appium Inspector工具的配置"></a>4.Appium Inspector工具的配置</h3><ol>
+<li><p><strong>Appium Inspector工具使用前提</strong></p>
+<ul>
+<li>打开Appium Desktop，开启Appium Inspector工具</li>
+<li>所测试设备是开机状态（手机或者模拟器）</li>
+<li>确保电脑与设备是链接状态，也就是从cmd进入命令行终端，输入  adb  connect 127.0.0.1:62001链接夜神模拟器，输入  adb   Devices能够获取设备名称。</li>
+</ul>
+</li>
+<li><p><strong>Appium Inspector的服务器设置和高级设置</strong></p>
+<ul>
+<li>服务器设置：选择Automator Server （一定要记得点击一下，进行选中）</li>
+<li>高级设置：不进行设置</li>
+</ul>
+</li>
+<li><p><strong>编写Desired Capabilities参数（重点）</strong></p>
+<p>可以在左侧一行一行手动添加，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822111942478.png" alt="image-20230822111942478"></p>
+<p>提示：第二列的格式是针对第三列value值而言的。</p>
+<p>也可以把Json格式的数据编辑好，直接粘贴在右侧Json Representation里。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822112351826.png" alt="image-20230822112351826"></p>
+<p>直接把Json格式的数据直接粘贴过来。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822112448330.png" alt="image-20230822112448330"></p>
+<p>点击保存之后，数据会同步到左侧，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822112543774.png" alt="image-20230822112543774"></p>
+</li>
+<li><p><strong>保存Desired Capabilities参数</strong></p>
+<p>如有需要，在编辑完成Desired Capabilities参数之后，可以对其进行保存，方便以后的管理和使用。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822112903927.png" alt="image-20230822112903927"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822112923800.png" alt="image-20230822112923800"></p>
+</li>
+<li><p><strong>查看和修改已存储的Desired Capabilities</strong></p>
+<p>点击Saved Capabilities sets标签页，可以查看和修改已存储的Desired Capabilities。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822113205328.png" alt="image-20230822113205328"></p>
+</li>
+<li><p><strong>开启Session，连接手机获取手机界面</strong></p>
+<p>点击start Session，开启使用Appium Inspector工具。</p>
+<p>如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822113541137.png" alt="image-20230822113541137"></p>
+<p>说明：</p>
+<ul>
+<li>Appium Inspector需要我们手动创建一个session，其实也就是一个客户端，和Appium Server连接，并且需要在Desired Capabilities 里面填入一些参数。</li>
+<li>所需功能是在Desired Capabilities对象中编码的键和值，当请求新的自动化会话时，由Appium客户端发送到Appium Server服务器。Desired Capabilities告诉Appium驱动程序有关您希望测试如何工作的各种重要信息。最终Desired Capabilities将作为Json对象发送到Appium。</li>
+<li>所需功能的Desired Capabilities对象可以在WebDriver测试中编写脚本，也可以在Appium Server GUI中设置（通过Inspector会话中，就是上边的介绍方式）。</li>
+</ul>
+<p>提示：</p>
+<p>当Appium Inspector能够不能抓取手机屏幕时，可以关闭和重启adb服务，或者重启Appium Inspector服务。</p>
+<p>命令如下：</p>
+<ul>
+<li>adb kill-server</li>
+<li>adb start-server</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-Appium-Inspector工具的使用"><a href="#5-Appium-Inspector工具的使用" class="headerlink" title="5.	Appium Inspector工具的使用"></a>5.	<strong>Appium Inspector工具的使用</strong></h3><ol>
+<li><p><strong>Inspector定位控件界面的详细介绍</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822114808809.png"></p>
+<p>上图说明：</p>
+<ul>
+<li><p>布局1：截图的手机界面</p>
+<p> 可以点击选择元素。</p>
+</li>
+<li><p>布局2：顶部操作栏</p>
+<p> 从左往右的按钮依次是</p>
+<p> Select Element：选择元素。</p>
+<p> Swipe By Coordinates：选择滑动的起始和结束位置。</p>
+<p> Tap By Coordinates：使得手机界面变换可操作状态，可以点击界面的元素。</p>
+<p> Back：模拟Android的返回键。</p>
+<p> Refresh Source &amp; Screenshot：刷新页面，用来重新获取手机当前界面。</p>
+<p> Start Recording：录制操作。</p>
+<p> Search for element：校验定位表达式。</p>
+<p> Copy XML Source to Clipboard：复制XML树。</p>
+<p> Quit Session &amp; Close Inspector：退出当前Session。</p>
+</li>
+<li><p>布局3：XML树</p>
+<p> 以XML树的形式，展示界面上的控件布局。</p>
+</li>
+<li><p>布局4：控件属性区域</p>
+<p> 选择某个控件，在这里可以显示该控件的所有属性和值。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Selected  Element的介绍</strong></p>
+<p>选择元素功能：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822133904939.png" alt="image-20230822133904939"></p>
+<ol>
+<li><p><strong>顶部的Tap、Send Keys、Clear</strong></p>
+<p>模拟用户的操作：</p>
+<ul>
+<li>tap：相当于点击元素。</li>
+<li>Send keys：输入值、针对输入框的操作。</li>
+<li>Clear：清除所有值。</li>
+</ul>
+<p>建议：不建议用这些操作，因为很容易造成断开连接（左侧界面一直loading）…..反正我这边经常这样，如果不会的话当然最好用啦！</p>
+</li>
+<li><p><strong>Find By xpath</strong></p>
+<p>提供了该元素的XPATH表达式</p>
+<p>不推荐用，绝对路径太长了…..还是自己写吧！</p>
+</li>
+<li><p><strong>那串黄色背景色的英文</strong></p>
+<p>不建议使用XPATH定位器，因为它很脆弱，建议让开发团队提供独特的可访问性定位器（即：resource-id）</p>
+</li>
+<li><p><strong>Attribute-Value</strong></p>
+<p>属性列表</p>
+</li>
+</ol>
+</li>
+<li><p><strong>Search for element的介绍</strong></p>
+<p>搜索元素功能，位置如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822134908939.png" alt="image-20230822134908939"></p>
+<p>点击弹出如下界面：</p>
+<p>选择定位策略，如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822134952072.png" alt="image-20230822134952072"></p>
+<p>填写对应的定位表达式，如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822135027681.png" alt="image-20230822135027681"></p>
+<p>点击Search 就可以进行元素定位了。</p>
+<p>如果能找到Element的话表达式就是正确的，然后你还可以针对元素进行一些操作。</p>
+</li>
+<li><p><strong>在Appium Inspector中操作手机</strong></p>
+<p>当我们使用Appium Inspector定位工具获取到手机设置App界面的时候，如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822135321766.png" alt="image-20230822135321766"></p>
+<p>点击顶部操作栏中的Tap By Coordinates按钮，使得手机界面变换可操作状态。</p>
+<p>然后我们在左侧的手机界面中点击显示，就可以进入到显示的界面中了。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822135531324.png" alt="image-20230822135531324"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822135548543.png" alt="image-20230822135548543"></p>
+<p>进入到显示之后，现在我们还是保持在可操作手机的状态。</p>
+<p>之后我们就可以继续操作手机，也可以点击Select Element按钮，在当前页面中进行选择的元素。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822135756380.png" alt="image-20230822135756380"></p>
+<p>我们也可以点击Back按钮，返回到设置App的首界面。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822135855228.png" alt="image-20230822135855228"></p>
+<p>提示：这一点Appium Inspector定位工具就比Uiautomatorviewer定位方便多了。</p>
+</li>
+<li><p><strong>Start Recording的介绍（了解）</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822140101952.png" alt="image-20230822140101952"></p>
+<ul>
+<li>操作步骤：点击开始录制之后，在点击Tap By Coordinates，进入界面可操作状态。</li>
+<li>然后就可以开始点击你想要的元素了，这个时候就开始录制了。</li>
+<li>最后在Recorder下面会显示对应的代码，右侧可以选择不同的语言。</li>
+<li>建议：不要过多使用该功能，可以看到录制的代码是根据坐标去定位元素的，换个手机同一个元素坐标可能就不同了，可移植性不高。</li>
+</ul>
+</li>
+</ol>
+<h3 id="6-Uiautomatorviewer工具和Appium-Inspector工具对比"><a href="#6-Uiautomatorviewer工具和Appium-Inspector工具对比" class="headerlink" title="6.	Uiautomatorviewer工具和Appium Inspector工具对比"></a>6.	<strong>Uiautomatorviewer工具和Appium Inspector工具对比</strong></h3><ol>
+<li><p><strong>Uiautomatorviewer的局限性：</strong></p>
+<ol>
+<li>不能校验我们写的定位表达式是否正确定位到控件（类似浏览器上的F12）</li>
+<li>连接不够稳定</li>
+<li>不能模拟用户动作</li>
+</ol>
+</li>
+<li><p><strong>Appium Desktop的Inspector的优势：</strong></p>
+<ol>
+<li>可以校验定位表达式（如：XPATH表达式）。</li>
+<li>通过设置Desired Capabilities来连接手机，比较稳定。</li>
+<li>可以模拟用户动作（如：点击、返回、滑动等操作）。</li>
+<li>可以录制一系列操作，然后转换成代码。</li>
+</ol>
+<p>提示：</p>
+<p>学习或者编写脚本过程中，使用桌面版会方便一些，因为桌面版还提供了定位工具。而实际运行的时候，使用Server版本会更灵活，更容易与CI工具进行集成。</p>
+</li>
+</ol>
+<h2 id="Chrome-Inspect"><a href="#Chrome-Inspect" class="headerlink" title="Chrome  Inspect"></a>Chrome  Inspect</h2><h3 id="1-Chrome-Inspect的介绍"><a href="#1-Chrome-Inspect的介绍" class="headerlink" title="1.	Chrome Inspect的介绍"></a>1.	<strong>Chrome Inspect的介绍</strong></h3><p>Chrome Inspect定位工具是用来抓取App中Webview页面的。</p>
+<p>为了项目的需求，为了更好的保证效果和布局跨平台，Android&amp;H5混合开发一般是我们不错的选择。Google浏览器中的Chrome Inspect定位工具，提供了一个移动端Web页面开发调试的功能，通过它我们可以调试手机页面，可以看到页面的源码，从而进行元素的定位。</p>
+<p><strong>使用chrome Inspect定位工具的前提条件</strong></p>
+<p>使用Chrome开发人员工具调试原生Android应用中的WebView，Android版本应该在Android4.4（kitkat）或更高版本上，通过DevTools在原生Android应用中调试WebView页面中的内容。</p>
+<h3 id="2-Chrome-Inspect打开方式"><a href="#2-Chrome-Inspect打开方式" class="headerlink" title="2.	Chrome Inspect打开方式"></a>2.	<strong>Chrome Inspect打开方式</strong></h3><p>打开PC端的Chrome浏览器，在访问地址栏中输入Chrome：&#x2F;&#x2F;inspect&#x2F;就可以了，就是这么简单。</p>
+<p>如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822142646593.png" alt="image-20230822142646593"></p>
+<h3 id="3-Chrome-Inspect工具的使用"><a href="#3-Chrome-Inspect工具的使用" class="headerlink" title="3.	Chrome Inspect工具的使用"></a>3.	<strong>Chrome Inspect工具的使用</strong></h3><ol>
+<li><p><strong>Chrome Inspect工作前提</strong></p>
+<ul>
+<li><p>所测试设备是开机状态（手机或者模拟器）。</p>
+</li>
+<li><p>确保电脑与设备是链接状态，也就是cmd进入命令行终端，</p>
+<p> 输入adb connect 127.0.0.1:62001链接夜神模拟器，</p>
+<p> 输入adb devices能够获取设备名称。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Chrome Inspect操作</strong></p>
+<ol>
+<li><p><strong>在App中打开含有WebView的页面</strong></p>
+<p>例如：开百度App，进入到微博登陆的界面就是一个含有Webview的页面</p>
+<p>如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822144556161.png" alt="image-20230822144556161"></p>
+</li>
+<li><p><strong>在Chrome Inspect中识别到Webview页面</strong></p>
+<p>我们进入到PC端的Chrome浏览器中，访问地址栏中输入chrome：&#x2F;&#x2F;inspect&#x2F;（没有显示的话就点击一下刷新），就可以检测到当前应用程序界面是Webview页面了。</p>
+<p>如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822145022696.png" alt="image-20230822145022696"></p>
+</li>
+<li><p>点击inspect可以进入调试视图</p>
+<p>点击如上图中的inspect，可以进入Chrome Inspect工具的调试视图。</p>
+<p>会弹出一个新窗口，显示当前页面的Webview元素信息。</p>
+<p>并且元素定位方法同Selenium WebDriver一致。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822145325532.png" alt="image-20230822145325532"></p>
+<p>就是这么简单。</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>4.<strong>使用Chrome Inspect遇到的问题</strong></p>
+<ol>
+<li><p><strong>Android系统版本问题</strong></p>
+<p>Android移动设备版本应该在Android4.4或更高版本上。</p>
+<p>从Android4.4开始，webkit是支持远程调试的。</p>
+</li>
+<li><p><strong>所测App的debug模式要打开</strong></p>
+<p>在使用Chrome Inspect工具调试移动端App的Webview页面的时候，需要将该App的debug模式打开。</p>
+<p>但其实大部分App的debug模式都是关闭的，要去找一个开启debug模式的版本还是比较麻烦的，因此需要使用借助第三方工具来强制开启任何App的Android webview debug模式，使之可以使用chrome Inspect。</p>
+<p>而这个工具就是Xposed。</p>
+</li>
+<li><p><strong>Xposed工具的安装</strong></p>
+<ol>
+<li><p><strong>将设备进行root。</strong></p>
+<p>因为涉及到root权限，因此需要将设备进行root。</p>
+<p>很多工具可以来root，比如kingRoot等。</p>
+<p>注：Android模拟器默认root</p>
+</li>
+<li><p><strong>下载Xposed框架。</strong></p>
+<p>官方下载地址：<a target="_blank" rel="noopener" href="http://repo.xposed.info/module/de.robv.android.xposed.installer">http://repo.xposed.info/module/de.robv.android.xposed.installer</a></p>
+<p>点击页面下方的show older version，选择一个稳定版本进行下载。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822150817186.png" alt="image-20230822150817186"></p>
+</li>
+<li><p><strong>安装Xposed框架。</strong></p>
+<p>将下载好的Xposed安装包de.robv.android.xposed.installer_v32_de4f0d.apk,直接拖入到Android模拟器中，进行安装。</p>
+<p>安装好后如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822151124832.png" alt="image-20230822151124832"></p>
+</li>
+<li><p>安装&#x2F;更新Xposed框架。</p>
+<p>打开Xposed Installer，选择“安装&#x2F;更新”的最新版，然后“安装”会自动下载刷入。（过程可能会有一些慢）</p>
+<p>如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822151338617.png" alt="image-20230822151338617"></p>
+<p>安装界面，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822151416804.png" alt="image-20230822151416804"></p>
+<p>安装更新完成后的界面，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822151524633.png" alt="image-20230822151524633"></p>
+</li>
+</ol>
+</li>
+<li><p><strong>安装Xposed webview debugging模块。</strong></p>
+<p>打开Xposed界面中点击左上角的三条横杠，选择模块，然后启用需激活模块的复选框，正常重启后即可使用。</p>
+<p>如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822151841755.png" alt="image-20230822151841755"></p>
+<p>如果你的手机中没有安装webViewDebugHook模块或者没有任何模块，如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822152006781.png" alt="image-20230822152006781"></p>
+<p>可以在Xposed中进行下载安装WebViewDebugHook模块。</p>
+<p>如下图：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822152114053.png" alt="image-20230822152114053"></p>
+<p>然后按照上面的方式激活WebViewDebugHook模块即可。</p>
+</li>
+<li><p><strong>HTTP&#x2F;1.1 404 Not Found和空白页问题</strong></p>
+<p>在chrome：&#x2F;&#x2F;inspect&#x2F;#devices中点击inspect出现的窗口中，界面是出现HTTP&#x2F;1.1 404 Not Found 或者是空白页的现象。</p>
+<p>空白页，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822152535217.png" alt="image-20230822152535217"></p>
+<p>HTTP&#x2F;1.1 404 Not Found界面，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/AppData\Typora\typora-user-images\image-20230822152632759.png" alt="image-20230822152632759"></p>
+<p>原因：</p>
+<p>对于国内的程序猿来说，由于无法访问<a target="_blank" rel="noopener" href="https://chrome-devtools-frontend.appspot.com,就会出现出现http/1.1">https://chrome-devtools-frontend.appspot.com,就会出现出现HTTP/1.1</a> 404 Not Found或者空白页面的现象。</p>
+<p>例如上面的@33f6ad690e178169a17596eeec8596751a696d1e就是移动设备中浏览器的一个版本号，当你换一个手机或模拟器的时候，版本号可能就不一样了。</p>
+<p>因为不同型号的手机生产商可能会打包不同版本的chrome浏览器内核，chrome Inspect定位工具就会先访问<a target="_blank" rel="noopener" href="https://chrome-devtools-frontend.appspot.com,下载对应的chrome-devtools相关驱动,而国内无法访问并下载这些驱动,就出现了404和空白页./">https://chrome-devtools-frontend.appspot.com,下载对应的chrome-devtools相关驱动，而国内无法访问并下载这些驱动，就出现了404和空白页。</a></p>
+<p>网上找到如下三种解决方式：</p>
+<ul>
+<li><p>方法一：下载devtools的Inspect的离线开发者调试工具包。（花钱，没有免费的）</p>
+</li>
+<li><p>方法二：修改网络连接，修改hosts文件。</p>
+</li>
+<li><p>方法三：使用第三方的chrome内核的浏览器，如QQ浏览器。</p>
+<p> （都不好使，大家也可以自己试试）</p>
+<p> 推荐使用VPN，或者下载一个可FQ的谷歌浏览器用一下即可，不用的时候就关了</p>
+</li>
+</ul>
+</li>
+<li><p><strong>补充：安卓模拟器打开开发者选项</strong></p>
+<ol>
+<li>打开手机的“设置”，进入到“设置”页面</li>
+<li>滑到“设置”页面的最下端，找到“关于手机”，进入到“关于手机”页面</li>
+<li>找到“版本号”，连续点击</li>
+<li>会弹出一段文字提醒，直到提醒次数为0后，结束点击</li>
+<li>返回“设置”界面，开发者选项就出来了</li>
+</ol>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Soul King</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/">http://example.com/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Soul-king</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Appium%E5%AD%A6%E4%B9%A0/">Appium学习</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2023/08/30/52LHYFsPjieb4K8.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/29/ADB%E5%91%BD%E4%BB%A4/" title="ADB学习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/08/30/52LHYFsPjieb4K8.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ADB学习</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/29/Linux%E5%AD%A6%E4%B9%A0/" title="Linux学习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Linux学习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/08/29/Appium%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" title="Appium学习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/08/30/52LHYFsPjieb4K8.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-08-29</div><div class="title">Appium学习</div></div></a></div><div><a href="/2023/09/29/ADB%E5%91%BD%E4%BB%A4/" title="ADB学习"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/08/30/52LHYFsPjieb4K8.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-29</div><div class="title">ADB学习</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/sk.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Soul King</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Joker2020-cmd/Joker2020-cmd.Github.io"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">努力更新中....</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E4%B9%8BAppium"><span class="toc-number">1.</span> <span class="toc-text">移动端自动化测试框架之Appium</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Appium%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.1.</span> <span class="toc-text">Appium元素定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-By-id%E5%AE%9A%E4%BD%8D%EF%BC%88%E5%BA%9F%E5%BC%83%E7%BB%9F%E4%B8%80%E7%94%A8MobileBy%E7%B1%BB%EF%BC%89"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">1.	By_id定位（废弃统一用MobileBy类）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-by-name%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">2.	by_name定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-by-class-name%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">3.	by_class_name定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-by-xpath%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">4.	by_xpath定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-by-accessibility-id%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.1.0.5.</span> <span class="toc-text">5.	by_accessibility_id定位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-By-android-uiautomator%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.1.0.6.</span> <span class="toc-text">6.	By_android_uiautomator定位</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Web%E9%A1%B5%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%EF%BC%8C%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E6%98%AF%E9%A1%B5%E9%9D%A2%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5%E3%80%82"><span class="toc-number">1.2.</span> <span class="toc-text">Web页面自动化测试，元素定位是页面自动化测试的第一步。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#App%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%8C%E4%B9%9F%E6%98%AF%E5%85%83%E7%B4%A0%E7%9A%84%E5%AE%9A%E4%BD%8D%E3%80%82"><span class="toc-number">1.3.</span> <span class="toc-text">App自动化测试的第一步，也是元素的定位。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#App%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%E5%AE%9A%E4%BD%8D%E5%B7%A5%E5%85%B7%E5%A4%A7%E8%87%B4%E6%9C%89%E4%B8%89%E7%A7%8D%EF%BC%9A"><span class="toc-number">1.4.</span> <span class="toc-text">App中的元素定位工具大致有三种：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uiautomatorviewer%E5%B7%A5%E5%85%B7"><span class="toc-number">1.5.</span> <span class="toc-text">Uiautomatorviewer	工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Appium-Inspector%E5%B7%A5%E5%85%B7"><span class="toc-number">1.6.</span> <span class="toc-text">Appium 	Inspector	工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ChromeInspect%E5%B7%A5%E5%85%B7"><span class="toc-number">1.7.</span> <span class="toc-text">Chrome	Inspect	工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Uiautomatorviewer"><span class="toc-number">1.8.</span> <span class="toc-text">Uiautomatorviewer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Uiautomatorviewer%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.8.1.</span> <span class="toc-text">1.	Uiautomatorviewer介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Uiautomatorviewer%E5%B7%A5%E5%85%B7%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F"><span class="toc-number">1.8.2.</span> <span class="toc-text">2.	Uiautomatorviewer工具打开方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Uiautomatorviewer%E5%B8%83%E5%B1%80%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.8.3.</span> <span class="toc-text">3.	Uiautomatorviewer布局界面介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Uiautomatorviewer%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.8.4.</span> <span class="toc-text">4.Uiautomatorviewer工具的使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Appium-Inspector"><span class="toc-number">1.9.</span> <span class="toc-text">Appium Inspector</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Appium-Inspector"><span class="toc-number">1.9.1.</span> <span class="toc-text">1.	Appium Inspector</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Appium-Inspector%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F"><span class="toc-number">1.9.2.</span> <span class="toc-text">2.   Appium Inspector打开方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Appium-Inspector%E5%B8%83%E5%B1%80%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.9.3.</span> <span class="toc-text">3.Appium Inspector布局介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Appium-Inspector%E5%B7%A5%E5%85%B7%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">1.9.4.</span> <span class="toc-text">4.Appium Inspector工具的配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Appium-Inspector%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.9.5.</span> <span class="toc-text">5.	Appium Inspector工具的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Uiautomatorviewer%E5%B7%A5%E5%85%B7%E5%92%8CAppium-Inspector%E5%B7%A5%E5%85%B7%E5%AF%B9%E6%AF%94"><span class="toc-number">1.9.6.</span> <span class="toc-text">6.	Uiautomatorviewer工具和Appium Inspector工具对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chrome-Inspect"><span class="toc-number">1.10.</span> <span class="toc-text">Chrome  Inspect</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Chrome-Inspect%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.10.1.</span> <span class="toc-text">1.	Chrome Inspect的介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Chrome-Inspect%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F"><span class="toc-number">1.10.2.</span> <span class="toc-text">2.	Chrome Inspect打开方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Chrome-Inspect%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">1.10.3.</span> <span class="toc-text">3.	Chrome Inspect工具的使用</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/07/ComfyUI-Flux/" title="ComfyUI-Flux"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://framerusercontent.com/images/7Nhoxwn9eWYrqKjEewfXutR90U.png?scale-down-to=1024" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ComfyUI-Flux"/></a><div class="content"><a class="title" href="/2025/01/07/ComfyUI-Flux/" title="ComfyUI-Flux">ComfyUI-Flux</a><time datetime="2025-01-07T08:08:03.000Z" title="发表于 2025-01-07 16:08:03">2025-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/04/Prometheus%E5%AD%A6%E4%B9%A0/" title="Prometheus学习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2024/08/04/6eEcbmNaql9Q43x.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Prometheus学习"/></a><div class="content"><a class="title" href="/2024/08/04/Prometheus%E5%AD%A6%E4%B9%A0/" title="Prometheus学习">Prometheus学习</a><time datetime="2024-08-04T10:32:34.000Z" title="发表于 2024-08-04 18:32:34">2024-08-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/29/ADB%E5%91%BD%E4%BB%A4/" title="ADB学习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/08/30/52LHYFsPjieb4K8.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ADB学习"/></a><div class="content"><a class="title" href="/2023/09/29/ADB%E5%91%BD%E4%BB%A4/" title="ADB学习">ADB学习</a><time datetime="2023-09-29T01:37:08.000Z" title="发表于 2023-09-29 09:37:08">2023-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/" title="Appium学习01"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://s2.loli.net/2023/08/30/52LHYFsPjieb4K8.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Appium学习01"/></a><div class="content"><a class="title" href="/2023/09/29/Appium%E5%AD%A6%E4%B9%A001/" title="Appium学习01">Appium学习01</a><time datetime="2023-09-29T01:37:08.000Z" title="发表于 2023-09-29 09:37:08">2023-09-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/09/29/Linux%E5%AD%A6%E4%B9%A0/" title="Linux学习"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux学习"/></a><div class="content"><a class="title" href="/2023/09/29/Linux%E5%AD%A6%E4%B9%A0/" title="Linux学习">Linux学习</a><time datetime="2023-09-29T01:37:08.000Z" title="发表于 2023-09-29 09:37:08">2023-09-29</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s2.loli.net/2023/08/30/52LHYFsPjieb4K8.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By Soul King</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="2400485596" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-lrcType="-1"> </div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
